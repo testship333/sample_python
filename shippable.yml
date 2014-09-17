@@ -9,19 +9,18 @@ python:
   #- pypy
 install:
   - pip install -r requirements.txt
+
 archive: true
 # Make folders for the reports
 before_script:
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
-  - echo $var
+ 
 script:
   - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
   - which python && coverage run --branch test.py
   - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
-  #- echo $secret >> README.md
-  - cat ~/.gitconfig
-  - echo $var2
+  
 notifications:
     email:
       recipients:
