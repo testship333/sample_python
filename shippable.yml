@@ -23,6 +23,7 @@ parallelized_test : true
 
   
 archive: true
+
 notifications:
      email:
          recipients:
