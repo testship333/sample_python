@@ -9,6 +9,9 @@ python:
   #- pypy
 install:
   - pip install -r requirements.txt
+  
+env:
+  - Foo=bar
 
 archive: true
 # Make folders for the reports
@@ -20,6 +23,7 @@ script:
   - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
   - which python && coverage run --branch test.py
   - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
+  - echo $Foo
   
 notifications:
     email:
